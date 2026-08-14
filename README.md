@@ -1,6 +1,12 @@
 # Certifyme
 
-Certifyme is a frontend-only certificate bucket built with React and Tailwind CSS. It lets you store certificate files locally in the browser, organize them by category, and preview supported file types without any backend.
+Certifyme is a split frontend + backend certificate bucket built with React, Tailwind CSS, and Express. The frontend handles browsing, filtering, and uploads while the backend stores the certificate files on disk and serves view/download links.
+
+## Project Structure
+
+- `frontend/` contains the React app.
+- `backend/` contains the file upload API and stored certificates.
+- Uploaded files are saved on the server, not in browser storage.
 
 ## Features
 
@@ -17,6 +23,14 @@ npm install
 npm run dev
 ```
 
+In a second terminal, run:
+
+```bash
+npm run backend
+```
+
+If you prefer to run the frontend separately, use `npm run dev:frontend`.
+
 ## Build
 
 ```bash
@@ -25,5 +39,5 @@ npm run build
 
 ## Notes
 
-- This project does not use a backend.
-- Files are stored locally in the browser, so clearing site data will remove them.
+- The backend stores uploaded certificate files in `backend/uploads/` and metadata in `backend/data/`.
+- The frontend requests certificates from `/api` and provides separate View and Download actions for each file.
